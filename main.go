@@ -1,9 +1,9 @@
 package main
 
-func main() {
+// setting: test directory location
+var root = "./mock"
 
-	// test directory
-	var root = "./mock"
+func main() {
 
 	// run method to get list of directory
 	dir, err := readDirectory(root)
