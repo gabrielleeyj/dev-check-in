@@ -19,6 +19,8 @@ func main() {
 		}
 
 		// if readChecker returns valid append to verified slice
-		println(data)
+		if data != "" {
+			println("found keyword at: %v", data)
+		}
 	}
 }
