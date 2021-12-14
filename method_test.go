@@ -11,6 +11,8 @@ var (
 	err   error
 )
 
+// Checks the directories available from root
+// only returns first level from root.
 func TestReadDirectory(t *testing.T) {
 	files, err = os.ReadDir(root)
 	if err != nil {
