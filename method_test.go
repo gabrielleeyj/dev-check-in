@@ -53,3 +53,14 @@ func TestNestedDirectoryRead(t *testing.T) {
 		println(path)
 	}
 }
+
+// Test to check if I'm able to read the file from path
+func TestReadFile(t *testing.T) {
+	for _, path := range findList {
+		data, err := os.ReadFile(path)
+		if err != nil {
+			panic(err)
+		}
+		os.Stdout.Write(data)
+	}
+}
