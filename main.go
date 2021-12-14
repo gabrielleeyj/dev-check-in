@@ -1,7 +1,10 @@
 package main
 
 // setting: test directory location
-var directory = "./mock"
+var (
+	directory = "./mock"
+	keyword   = "TODO"
+)
 
 func main() {
 
@@ -13,14 +16,14 @@ func main() {
 
 	// traverse through the list of directory and read the file
 	for _, path := range dir {
-		data, err := readChecker(path)
+		data, err := readChecker(path, keyword)
 		if err != nil {
 			println(err)
 		}
 
 		// if readChecker returns valid append to verified slice
 		if data != "" {
-			println("found keyword at: %v", data)
+			println(data)
 		}
 	}
 }

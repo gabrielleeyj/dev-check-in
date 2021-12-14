@@ -24,7 +24,7 @@ func readDirectory(root string) ([]string, error) {
 	return findList, err
 }
 
-func readChecker(path string) (string, error) {
+func readChecker(path, keyword string) (string, error) {
 	data, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -33,7 +33,7 @@ func readChecker(path string) (string, error) {
 	scanner := bufio.NewScanner(data)
 	line := 1
 	for scanner.Scan() {
-		if bytes.Contains(scanner.Bytes(), []byte("TODO")) {
+		if bytes.Contains(scanner.Bytes(), []byte(keyword)) {
 			return path, nil
 		}
 		line++
