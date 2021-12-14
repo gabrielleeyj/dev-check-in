@@ -1,12 +1,12 @@
 package main
 
 // setting: test directory location
-var root = "./mock"
+var directory = "./mock"
 
 func main() {
 
 	// run method to get list of directory
-	dir, err := readDirectory(root)
+	dir, err := readDirectory(directory)
 	if err != nil {
 		println(err)
 	}
