@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -62,5 +64,34 @@ func TestReadFile(t *testing.T) {
 			panic(err)
 		}
 		os.Stdout.Write(data)
+	}
+}
+
+// Scan the file line by line to find the matching string "TODO"
+func TestReadScan(t *testing.T) {
+	var todoPaths []string
+	for _, path := range findList {
+		data, err := os.Open(path)
+		if err != nil {
+			panic(err)
+		}
+
+		scanner := bufio.NewScanner(data)
+		line := 1
+		for scanner.Scan() {
+			if bytes.Contains(scanner.Bytes(), []byte("TODO")) {
+				todoPaths = append(todoPaths, path)
+			}
+			line++
+		}
+
+		err = scanner.Err()
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	for _, path := range todoPaths {
+		println(path)
 	}
 }
